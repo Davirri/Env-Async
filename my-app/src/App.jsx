@@ -10,14 +10,15 @@ function App() {
   const [sectionHeroData, setSectionHeroData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const VITE_AMR = import.meta.env
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [sectionOneRes, sectionThreeRes, sectionHeroRes] = await Promise.all([
-          fetch(`${import.meta.env.VITE_API_URL}/section-one`),
-          fetch(`${import.meta.env.VITE_API_URL}/section-three`),
-          fetch(`${import.meta.env.VITE_API_URL}/section-hero`),
+          fetch(`${VITE_AMR.VITE_API_URL}/section-one`),
+          fetch(`${VITE_AMR.VITE_API_URL}/section-three`),
+          fetch(`${VITE_AMR.VITE_API_URL}/section-hero`),
         ]);
 
         if (!sectionOneRes.ok || !sectionThreeRes.ok || !sectionHeroRes.ok) {
